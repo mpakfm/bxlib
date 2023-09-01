@@ -5,7 +5,8 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Mpakfm\\Bxlib\\": "src/"
+            "Mpakfm\\Bxlib\\": "src/",
+            "Tests\\": "tests/"
         }
     },
     "authors": [
@@ -16,6 +17,11 @@
     ],
     "minimum-stability": "stable",
     "require": {
-        "guzzlehttp/guzzle": "^7.8"
+        "guzzlehttp/guzzle": "^7.8",
+        "mpakfm/printu": "^2.0",
+        "symfony/dotenv": "^5.4"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.6"
     }
 }

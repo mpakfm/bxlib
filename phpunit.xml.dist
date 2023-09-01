@@ -1,0 +1,10 @@
+<phpunit
+        bootstrap="tests/bootstrap.php"
+        beStrictAboutTestsThatDoNotTestAnything="false"
+        colors="true">
+    <testsuites>
+        <testsuite name="Api Test Suit">
+            <directory>tests</directory>
+        </testsuite>
+    </testsuites>
+</phpunit>
