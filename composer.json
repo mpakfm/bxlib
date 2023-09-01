@@ -1,0 +1,21 @@
+{
+    "name": "mpakfm/bxlib",
+    "description": "Bitrix tools",
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Mpakfm\\Bxlib\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Сергей Фомин",
+            "email": "fomin-sg@ranepa.ru"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "guzzlehttp/guzzle": "^7.8"
+    }
+}
