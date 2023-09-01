@@ -2,9 +2,11 @@
 /log/
 
 # other
+.env
 .idea/
+.phpunit.result.cache
+/bitrix
 /vendor
-/*.log
 
 #win tests conf
 php-cs-fixer.bat
