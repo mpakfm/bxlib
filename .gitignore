@@ -1,0 +1,10 @@
+# logs
+/log/
+
+# other
+.idea/
+/vendor
+/*.log
+
+#win tests conf
+php-cs-fixer.bat
