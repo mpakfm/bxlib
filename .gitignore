@@ -1,9 +1,13 @@
+#conf
+.php-cs-fixer.php
+
 # logs
 /log/
 
 # other
 .env
 .idea/
+.php-cs-fixer.cache
 .phpunit.result.cache
 /bitrix
 /vendor
