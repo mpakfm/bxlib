@@ -4,7 +4,7 @@ namespace Tests;
 
 use Mpakfm\Bxlib\PhpCsFixer\Config;
 use Mpakfm\Bxlib\PhpCsFixer\DiffLine;
-use Mpakfm\Bxlib\PhpCsFixer\PhpCsFixerFilesAnalyzer;
+use Mpakfm\Bxlib\PhpCsFixer\FilesAnalyzer;
 use Mpakfm\Bxlib\ProcessExecutor\Launcher;
 use Mpakfm\Bxlib\ProcessExecutor\Result;
 use PhpCsFixer\Console\Command\FixCommandExitStatusCalculator;
@@ -149,7 +149,12 @@ class PhpCsFixerTest extends TestCase
         }
 
         if ($exitCode & FixCommandExitStatusCalculator::EXIT_STATUS_FLAG_HAS_CHANGED_FILES) {
-            $analyzer = new PhpCsFixerFilesAnalyzer($_SERVER['DOCUMENT_ROOT'] . '/' . $configFilename);
+            if (empty($_SERVER['DOCUMENT_ROOT'])) {
+                $path = $configFilename;
+            } else {
+                $path = $_SERVER['DOCUMENT_ROOT'] . '/' . $configFilename;
+            }
+            $analyzer = new FilesAnalyzer($path);
 
             $messages[] = 'Some files need fixing.';
             $messages[] = $this->reformatPhpCsFixerStdOut($analyzer, $consoleCommand->getStandardOutputLines());
@@ -188,11 +193,11 @@ class PhpCsFixerTest extends TestCase
     }
 
     /**
-     * @param PhpCsFixerFilesAnalyzer $analyzer
-     * @param string[]                $standardOutputLines
+     * @param FilesAnalyzer $analyzer
+     * @param string[]      $standardOutputLines
      * @return string
      */
-    private function reformatPhpCsFixerStdOut(PhpCsFixerFilesAnalyzer $analyzer, array $standardOutputLines)
+    private function reformatPhpCsFixerStdOut(FilesAnalyzer $analyzer, array $standardOutputLines)
     {
         $result = '';
 
@@ -242,7 +247,7 @@ class PhpCsFixerTest extends TestCase
                     }
 
                     $result .= "\n";
-                    $result .= PhpCsFixerFilesAnalyzer::convertDiffToString($diffGroups);
+                    $result .= FilesAnalyzer::convertDiffToString($diffGroups);
 
                     $i++;
                 }

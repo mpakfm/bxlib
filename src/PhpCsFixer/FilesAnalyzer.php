@@ -8,7 +8,7 @@ use Mpakfm\Bxlib\ProcessExecutor\Launcher;
 use PhpCsFixer\ConfigInterface;
 use RuntimeException;
 
-class PhpCsFixerFilesAnalyzer
+class FilesAnalyzer
 {
     /** @var ConfigInterface */
     private $config;
