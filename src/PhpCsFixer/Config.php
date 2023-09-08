@@ -212,11 +212,11 @@ class Config
             'config'      => [
                 'allow_single_line_anonymous_functions'     => true, // Разрешить анонимным функциям иметь открывающие и закрывающие скобки в одной строке
                 'allow_single_line_empty_anonymous_classes' => true, // Разрешить анонимным классам иметь открывающие и закрывающие скобки в одной строке
-                'anonymous_classes_opening_brace'           => ['same_line'], // Положение открывающей скобки тела анонимного класса
-                'anonymous_functions_opening_brace'         => ['same_line'], // Положение открывающей скобки тела анонимной функции
-                'classes_opening_brace'                     => ['next_line_unless_newline_at_signature_end'], // Положение открывающей скобки тела класса
-                'control_structures_opening_brace'          => ['same_line'], // Положение раскрывающейся скобки управляющих конструкций
-                'functions_opening_brace'                   => ['next_line_unless_newline_at_signature_end'], // Положение открывающей скобки тела функции
+                'anonymous_classes_opening_brace'           => 'same_line', // Положение открывающей скобки тела анонимного класса
+                'anonymous_functions_opening_brace'         => 'same_line', // Положение открывающей скобки тела анонимной функции
+                'classes_opening_brace'                     => 'next_line_unless_newline_at_signature_end', // Положение открывающей скобки тела класса
+                'control_structures_opening_brace'          => 'same_line', // Положение раскрывающейся скобки управляющих конструкций
+                'functions_opening_brace'                   => 'next_line_unless_newline_at_signature_end', // Положение открывающей скобки тела функции
             ],
         ],
         // Вокруг круглых скобок объявления не должно быть пробелов.

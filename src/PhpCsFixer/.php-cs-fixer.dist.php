@@ -3,22 +3,30 @@
  * Этот файл необходимо скопировать в корень проекта с именем .php-cs-fixer.php
  * Указать необходимые значения в константах битрикса
  *
- * Настроить правила стилей
- * Включить в конфиг требуемые для проекта правила:
- * $myConf
- *    ->setConfRule('align_multiline_comment')
- *    ->setConfRule('array_indentation');
+ * Настроить требуемые правила стилей:
  */
 
 use Mpakfm\Bxlib\PhpCsFixer\Config as PhpCsFixerConfig;
 use PhpCsFixer\Config;
 
-define('NOT_CHECK_PERMISSIONS', true);
-define("NO_AGENT_CHECK", true);
-define('SITE_ID', 'lb');
-define('BX_UTF', true);
-define('NO_KEEP_STATISTIC', true);
-define('BX_BUFFER_USED', true);
+if (!defined('NOT_CHECK_PERMISSIONS')) {
+    define("NOT_CHECK_PERMISSIONS", true);
+}
+if (!defined('NO_AGENT_CHECK')) {
+    define("NO_AGENT_CHECK", true);
+}
+if (!defined('SITE_ID')) {
+    define("SITE_ID", 'lb');
+}
+if (!defined('BX_UTF')) {
+    define("BX_UTF", true);
+}
+if (!defined('NO_KEEP_STATISTIC')) {
+    define("NO_KEEP_STATISTIC", true);
+}
+if (!defined('BX_BUFFER_USED')) {
+    define("BX_BUFFER_USED", true);
+}
 
 if ($_SERVER['DOCUMENT_ROOT'] == '') {
     $_SERVER['DOCUMENT_ROOT'] = __DIR__;
@@ -38,6 +46,7 @@ $myConf
     ->setConfRule('concat_space')
     ->setConfRule('constant_case')
     ->setConfRule('control_structure_braces')
+    ->setConfRule('curly_braces_position')
     ->setConfRule('declare_parentheses')
     ->setConfRule('encoding')
     ->setConfRule('full_opening_tag')
