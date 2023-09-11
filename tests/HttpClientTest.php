@@ -15,7 +15,7 @@ class HttpClientTest extends TestCase
     public function testClientGetMethod()
     {
         $dtStart = microtime(true);
-        $url     = $_ENV['TEST_BASE_URL'] . '/local/?a=123';
+        $url     = $_ENV['TEST_BASE_URL'] . '/httpclient?a=123';
         $client  = (new HttpClient($url, 'GET', [], false));
         $client->run(HttpClient::RUN_TYPE_JSON_OBJECT);
 
@@ -31,7 +31,7 @@ class HttpClientTest extends TestCase
     public function testClientPostMethod()
     {
         $dtStart      = microtime(true);
-        $url          = $_ENV['TEST_BASE_URL'] . '/local/?a=123';
+        $url          = $_ENV['TEST_BASE_URL'] . '/httpclient?a=123';
         $client       = (new HttpClient($url, 'POST'));
         $client->form = [
             'name'      => 'Unit',

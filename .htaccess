@@ -10,23 +10,35 @@ ErrorDocument 404 /404.php
 	#php_value mbstring.internal_encoding UTF-8
 </IfModule>
 
-<IfModule mod_rewrite.c>
-	Options +FollowSymLinks
-	RewriteEngine On
-
-	#Все что не файл, не директория, не картинка и т.п. - то на index.php
+#<IfModule mod_rewrite.c>
+#	Options +FollowSymLinks
+#	RewriteEngine On
+#
+#	#Все что не файл, не директория, не картинка и т.п. - то на index.php
 #    RewriteCond %{REQUEST_URI} !^/(index\.php|images|robots\.txt|public) [NC]
 #    RewriteCond %{REQUEST_URI} !\.(cssіjsіjpgіgifіpng)$
 #    RewriteCond %{REQUEST_FILENAME} !-f
 #    RewriteCond %{REQUEST_FILENAME} !-d
 #    RewriteRule ^(.*)$ /local/index.php?$1 [L,QSA]
+#
+#	RewriteCond %{REQUEST_FILENAME} !-f
+#	RewriteCond %{REQUEST_FILENAME} !-l
+#	RewriteCond %{REQUEST_FILENAME} !-d
+#	RewriteCond %{REQUEST_FILENAME} !/bitrix/urlrewrite.php$
+#	RewriteRule ^(.*)$ /bitrix/urlrewrite.php [L]
+#	RewriteRule .* - [E=REMOTE_USER:%{HTTP:Authorization}]
+#</IfModule>
 
+<IfModule mod_rewrite.c>
+	Options +FollowSymLinks
+	RewriteEngine On
 	RewriteCond %{REQUEST_FILENAME} !-f
 	RewriteCond %{REQUEST_FILENAME} !-l
 	RewriteCond %{REQUEST_FILENAME} !-d
 	RewriteCond %{REQUEST_FILENAME} !/bitrix/urlrewrite.php$
 	RewriteRule ^(.*)$ /bitrix/urlrewrite.php [L]
-	RewriteRule .* - [E=REMOTE_USER:%{HTTP:Authorization}]
+	RewriteCond %{HTTP:Authorization} ^(.*)
+	RewriteRule .* - [e=HTTP_AUTHORIZATION:%1]
 </IfModule>
 
 <IfModule mod_dir.c>
