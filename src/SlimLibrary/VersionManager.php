@@ -40,17 +40,17 @@ class VersionManager
 
     public static function getMinVersion(): float
     {
-        return min(self::$versions);
+        return min(static::$versions);
     }
 
     public static function getMaxVersion(): float
     {
-        return max(self::$versions);
+        return max(static::$versions);
     }
 
     public static function getVersionList(): array
     {
-        return self::$versions;
+        return static::$versions;
     }
 
     public function setCurrentVersion(float $version): VersionManager
