@@ -118,7 +118,7 @@ class HttpClient
         if ($this->cookies) {
             $options['cookies'] = $this->cookies;
         }
-        if ($this->allowRedirects) {
+        if (!is_null($this->allowRedirects)) {
             $options['allow_redirects'] = $this->allowRedirects;
         }
 
