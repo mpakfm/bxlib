@@ -52,14 +52,19 @@ class HttpClient
     /** @var CookieJarInterface */
     public $cookies;
 
-    /** @var bool|array */
-    public $allowRedirects = true;
+    /** @var bool */
+    public $allowRedirects;
+    /** @var bool */
+    public $defaultAllowRedirects = true;
 
     public function __construct(string $url, string $method, array $options = [])
     {
         $this->method  = $method;
         $this->uri     = $url;
         $this->options = $options;
+        if (array_key_exists('allow_redirects', $this->options)) {
+            $this->allowRedirects = ($this->options['allow_redirects']) ? true : false;
+        }
     }
 
     public function run($type = self::RUN_TYPE_JSON_ARRAY): HttpClient
@@ -113,7 +118,9 @@ class HttpClient
         if ($this->cookies) {
             $options['cookies'] = $this->cookies;
         }
-        $options['allow_redirects'] = $this->allowRedirects;
+        if ($this->allowRedirects) {
+            $options['allow_redirects'] = $this->allowRedirects;
+        }
 
         $this->response = $this->client->request($this->method, $url, $options);
         $this->code     = $this->response->getStatusCode();
@@ -255,6 +262,12 @@ class HttpClient
     public function enableRedirects(): HttpClient
     {
         $this->allowRedirects = true;
+        return $this;
+    }
+
+    public function disableRedirects(): HttpClient
+    {
+        $this->allowRedirects = false;
         return $this;
     }
 }
